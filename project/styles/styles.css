@@ -1,0 +1,681 @@
+/* styles.css
+
+Name: Brianna Drew
+ID: #0622446
+Date: April 19th, 2021 */
+
+@import url("https://fonts.googleapis.com/css2?family=Sue+Ellen+Francisco&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Thasadith&display=swap");
+
+/*------------------------------------------------------------------------------
+|                            Main Styles - All Pages
+|-----------------------------------------------------------------------------*/
+
+:root {
+  /* Colour variables: */
+  --header: #efae1b;
+  --imgbor: #021a40;
+  --hov: #dddbdb;
+  --bar1: #e84c3d;
+  --bar2: #e77e21;
+  --bar3: #f1c510;
+  --bar4: #52d88b;
+
+  /* Root styling and background image */
+  color: white;
+  background-image: url(../img/wood.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  font-family: "Sue Ellen Francisco", cursive;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/* Reset margins */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Pages should have a vertical overall directional flow */
+body {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Consistent styling for all buttons */
+button {
+  font-family: "Sue Ellen Francisco", cursive;
+  font-size: 1.25rem;
+  background: none;
+  border-style: none;
+}
+
+/* Clickable elements should have cursor pointer on hover */
+button:hover,
+a:hover,
+.m-recipe-results img,
+.s-recipe-results img,
+.m-recipe-results h2,
+.s-recipe-results h2 {
+  cursor: pointer;
+}
+
+/* Set font of elements that are not affected by root styling */
+input,
+textarea,
+select,
+option {
+  font-family: "Thasadith", sans-serif;
+  font-size: large;
+}
+
+/* Padding for form fields */
+input,
+textarea {
+  padding: 0.5rem;
+}
+
+/* Hide elements */
+.hidden {
+  display: none;
+}
+
+/* Pages should have a vertical overall directional flow */
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/* All form buttons with consistent styling */
+.form-buttons {
+  color: black;
+  background-color: white;
+  text-transform: uppercase;
+  padding: 1rem;
+  white-space: nowrap;
+}
+
+/* Change background colour of buttons on hover */
+.form-buttons:hover {
+  background-color: var(--hov);
+}
+
+/* Main page titles */
+h1 {
+  font-size: 3rem;
+  text-shadow: 3px 2px 3px rgb(53, 53, 53);
+}
+
+/* Form field labels */
+label:not(#remember-label) {
+  font-size: larger;
+  text-shadow: 3px 2px 3px rgb(53, 53, 53);
+}
+
+/* Tags plugin */
+jsuites-tags {
+  color: black;
+  background-color: white;
+}
+
+/*------------------------------------------------------------------------------
+|                                  Header / Nav
+|-----------------------------------------------------------------------------*/
+
+/* Header/Navigation */
+header {
+  color: black;
+  width: 100%;
+  background-color: var(--header);
+  overflow: hidden;
+}
+
+/* Remove bullet points from items of dropdown menus */
+header ul {
+  list-style-type: none;
+}
+
+/* Website title that links to home page */
+#main-title a {
+  font-family: "Leckerli One", cursive;
+  color: black;
+  font-size: 3rem;
+  text-decoration: none;
+  text-shadow: 3px 2px 3px rgba(255, 255, 255, 0.3);
+  text-align: center;
+}
+
+/* Search box */
+header input[type="text"] {
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  width: 20rem;
+  border-style: none;
+}
+
+/* Horizontal flow of navigation items across top */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 2rem;
+  overflow: hidden;
+}
+
+/* Account dropdown menu and create recipe button */
+#nav-right {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+/* Search bar and button */
+#search-form {
+  display: flex;
+  align-items: center;
+}
+
+/* Button to create recipe */
+#create-button {
+  color: black;
+  text-decoration: none;
+  margin-right: 1rem;
+}
+
+/* Dropdown menus */
+#dropdown-menu,
+#account-dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Dropdown menu buttons */
+#dropdown-menu-button,
+#account-dropdown-button {
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+/* Content of dropdown menus */
+#dropdown-menu-links ul,
+#account-dropdown-links ul {
+  display: none;
+  position: absolute;
+  background-color: white;
+  text-align: left;
+  margin: 0;
+  z-index: 1;
+}
+
+/* Change background colour of content in dropdown menus */
+#dropdown-menu-links li:hover,
+#account-dropdown-links li:hover {
+  background-color: var(--hov);
+}
+
+/* Hide dropdown content */
+#dropdown-menu-links button,
+#account-dropdown-links button {
+  float: none;
+  display: block;
+}
+
+/* Display dropdown menu content when buttons are hovered over */
+#dropdown-menu:hover #dropdown-menu-links ul,
+#account-dropdown:hover #account-dropdown-links ul {
+  display: block;
+}
+
+/*------------------------------------------------------------------------------
+|                                Search Results
+|-----------------------------------------------------------------------------*/
+
+/* Display recipe results in grid format, 4 per row */
+.result-grid {
+  color: black;
+  display: grid;
+  width: 95vw;
+  margin: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Contents of recipe previews */
+.m-recipe-results,
+.s-recipe-results {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: 3px 3px 5px 6px rgb(53, 53, 53);
+}
+
+/* Recipe images */
+img {
+  padding: 1px;
+  border: 1px solid var(--imgbor);
+  display: block;
+  width: 280px;
+  max-width: 100%;
+  height: 280px;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+/* Align recipe images in the center */
+.m-recipe-results img,
+.s-recipe-results img {
+  align-self: center;
+}
+
+/* Recipe titles */
+.m-recipe-results h2,
+.s-recipe-results h2 {
+  font-size: 1.6em;
+}
+
+/* Text of recipe results */
+.m-recipe-results span,
+.m-recipe-results jsuites-tags,
+.s-recipe-results span,
+.s-recipe-results jsuites-tags {
+  font-size: 1.2rem;
+}
+
+/* Buttons on recipe results */
+.icon-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/*------------------------------------------------------------------------------
+|                                 Pagination
+|-----------------------------------------------------------------------------*/
+
+/* Pagination buttons should be side-by-side */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 0px;
+  list-style-type: none;
+}
+
+/* Pagination buttons */
+.pagination a {
+  color: black;
+  background-color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  margin: 0.05rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Change background colour of pagination buttons on hover */
+.pagination a:hover {
+  background-color: var(--hov);
+}
+
+/*------------------------------------------------------------------------------
+|                                 View Recipe
+|-----------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------
+|    View Recipe Pop-Up Modal - Modified from https://www.w3schools.com/howto/howto_css_modals.asp   |
+|---------------------------------------------------------------------------------------------------*/
+
+/* Background under pop-up modal */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Pop-up modal */
+.modal-content {
+  position: relative;
+  background-color: white;
+  color: black;
+  margin: 100px auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 90%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  margin-bottom: 100px;
+  overflow: auto;
+}
+
+/* Animation of pop-up modal "popping up" */
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+/* Animation of pop-up modal "popping up" */
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+/* Pop-up modal close button */
+.close {
+  color: black;
+  float: right;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+/* Close button on hover */
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Add padding around recipe content */
+.modal-header,
+.modal-body {
+  padding: 2px 16px;
+}
+
+/* Recipe titles */
+.modal-header h1 {
+  text-shadow: none;
+}
+
+/* Recipe body text */
+.modal-body span,
+.modal-body p,
+.modal-body jsuites-tags {
+  font-size: 1.5rem;
+}
+
+/* Contents of pop-up modal */
+#view-recipe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+/*------------------------------------------------------------------------------
+|                                 Account Management
+|-----------------------------------------------------------------------------*/
+
+/* Account management forms (login, new account, update account, etc.) */
+.account-management {
+  font-size: x-large;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Account management form elements */
+.account-management > * {
+  margin: 0.5rem;
+}
+
+/* Account management form fields and labels */
+.account-management input,
+label {
+  display: block;
+}
+
+/* Account management form field labels */
+.account-management label {
+  text-align: left;
+}
+
+/* Remember me section */
+#remember {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Remember me checkbox and label */
+#remember > * {
+  margin: 0.2rem;
+}
+
+/* Remember me checkbox */
+#remember input {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Remember me label and sign up link */
+#remember label,
+.account-management a {
+  font-family: "Thasadith", sans-serif;
+  font-weight: 900;
+  font-size: large;
+  text-shadow: 3px 2px 3px rgb(53, 53, 53);
+}
+
+/* Sign up link */
+.account-management a {
+  color: lightcoral;
+}
+
+/* Section for option to redirect to different page */
+.wrong-place {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: larger;
+  text-shadow: 3px 2px 3px rgb(53, 53, 53);
+}
+
+/* Button to redirect to different page */
+.wrong-place button {
+  color: rgb(0, 204, 255);
+  text-decoration: underline;
+  font-size: larger;
+  text-shadow: 3px 2px 3px rgb(53, 53, 53);
+}
+
+/* Forgotten password email input */
+#forgot-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Forgotten password email send button */
+#forgot-input button {
+  font-size: 1.8rem;
+}
+
+/* Custom password strength progress bar */
+.strength-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Section one of custom password strength progress bar */
+.bar-1 {
+  background-image: linear-gradient(
+    90deg,
+    white 0%,
+    white 50%,
+    var(--bar1) 50%,
+    var(--bar1) 100%
+  );
+  background-size: 200%;
+  border-top-left-radius: 0.75rem;
+  border-bottom-left-radius: 0.75rem;
+  border-style: none;
+  margin: 0px;
+  width: 2.5rem;
+  height: 0.75rem;
+}
+
+/* Section two of custom password strength progress bar */
+.bar-2 {
+  background-image: linear-gradient(
+    90deg,
+    white 0%,
+    white 50%,
+    var(--bar2) 50%,
+    var(--bar2) 100%
+  );
+  background-size: 200%;
+  border-style: none;
+  margin: 0px;
+  width: 2.5rem;
+  height: 0.75rem;
+}
+
+/* Section three of custom password strength progress bar */
+.bar-3 {
+  background-image: linear-gradient(
+    90deg,
+    white 0%,
+    white 50%,
+    var(--bar3) 50%,
+    var(--bar3) 100%
+  );
+  background-size: 200%;
+  border-style: none;
+  margin: 0px;
+  width: 2.5rem;
+  height: 0.75rem;
+}
+
+/* Section four of custom password strength progress bar */
+.bar-4 {
+  background-image: linear-gradient(
+    90deg,
+    white 0%,
+    white 50%,
+    var(--bar4) 50%,
+    var(--bar4) 100%
+  );
+  background-size: 200%;
+  border-top-right-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+  border-style: none;
+  margin: 0px;
+  width: 2.5rem;
+  height: 0.75rem;
+}
+
+/* Slide transition of custom password strength progress bar */
+.bar-trans {
+  background-position: -100%;
+  transition: background-position 0.3s cubic-bezier(0.47, 0.1, 1, 0.63),
+    color 0.2s linear;
+  transition-delay: 0s, 0.15s;
+}
+
+/*------------------------------------------------------------------------------
+|                             Create / Edit Recipe
+|-----------------------------------------------------------------------------*/
+
+/* Create/Edit recipe forms */
+.recipe-form {
+  font-size: x-large;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Contents of create/edit recipe forms */
+.recipe-form > * {
+  margin: 0.25rem;
+}
+
+/* Form fields and labels of create/edit recipe forms */
+.recipe-form input,
+label {
+  display: block;
+}
+
+/* Labels of form fields of create/edit recipe forms */
+.recipe-form label {
+  text-align: left;
+}
+
+/* Text input in create/edit recipe forms */
+.recipe-form input[type="text"] {
+  width: 40vw;
+}
+
+/* Buttons in create/edit recipe forms */
+.recipe-form button {
+  margin-top: 1rem;
+}
+
+/* Change background colour of buttons in create/edit recipe forms on hover */
+.recipe-form button:hover {
+  background-color: var(--hov);
+}
+
+/* Text area inputs of create/edit recipe forms */
+textarea {
+  width: 50vw;
+  height: 8rem;
+}
+
+/*------------------------------------------------------------------------------
+|                                    Footer
+|-----------------------------------------------------------------------------*/
+
+/* Copyright footer at bottom of all pages */
+footer {
+  color: black;
+  font-family: "Thasadith", sans-serif;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--header);
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  margin-top: 2rem;
+}
